@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orc Name Generator | Orsimer Names for Elder Scrolls</title>
+    <meta name="description" content="Generate authentic Orc (Orsimer) names for your Elder Scrolls Oblivion and Skyrim characters. Our Orc name generator creates lore-friendly names based on Stronghold naming conventions.">
+    <meta name="keywords" content="orc name generator, orc name generator skyrim, female orc name generator, female orc names, orc name generator male">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oblivion-name-generator.com/orc.html">
+    <meta property="og:title" content="Best Orc (Orsimer) Name Generator for Skyrim and Oblivion Characters">
+    <meta property="og:description" content="Generate authentic Orc (Orsimer) names for your Elder Scrolls Oblivion and Skyrim characters. Our Orc name generator creates lore-friendly names based on Stronghold naming conventions.">
+    <meta property="og:image" content="https://oblivion-name-generator.com/images/orc-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oblivion-name-generator.com/orc.html">
+    <meta property="twitter:title" content="Best Orc (Orsimer) Name Generator for Skyrim and Oblivion Characters">
+    <meta property="twitter:description" content="Generate authentic Orc (Orsimer) names for your Elder Scrolls Oblivion and Skyrim characters. Our Orc name generator creates lore-friendly names based on Stronghold naming conventions.">
+    <meta property="twitter:image" content="https://oblivion-name-generator.com/images/orc-og.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Race-specific styles */
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5rem;
+        }
+        
+        .generator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .generator-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .gender-selector {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .gender-btn {
+            background-color: var(--card-bg);
+            color: var(--medium-text);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            border-radius: var(--border-radius);
+        }
+        
+        .gender-btn.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-color: var(--primary-color);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            border: none;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 1.5rem 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .name-result {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin: 2rem 0;
+            min-height: 60px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            min-width: 80%;
+            cursor: pointer;
+        }
+        
+        .name-history {
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .name-history h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .history-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .history-list li {
+            background-color: var(--darker-bg);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .history-list li span {
+            color: var(--light-text);
+        }
+        
+        .history-list li button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            width: 60px;
+            height: 30px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .history-list li button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            background-color: var(--darker-bg);
+            color: var(--light-text);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+        
+        .other-races {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .other-races h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .race-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .race-links a {
+            background-color: var(--darker-bg);
+            color: var(--light-text);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+        
+        .race-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .race-info {
+            margin-top: 4rem;
+            text-align: left;
+        }
+        
+        .race-info h2 {
+            text-align: center;
+        }
+        
+        .race-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .race-info-text {
+            color: var(--medium-text);
+        }
+        
+        .race-info-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .race-info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .name-examples {
+            margin-top: 3rem;
+        }
+        
+        .name-examples h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .example-card {
+            background-color: var(--darker-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .example-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-card p {
+            color: var(--medium-text);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--darker-bg);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 40px;
+            margin-right: 1rem;
+        }
+        
+        .logo h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--light-text);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            width: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo p {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-color);
+        }
+        
+        .footer-links h3, .footer-races h3 {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul, .footer-races ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-links li, .footer-races li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a, .footer-races a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover, .footer-races a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-races ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 1rem;
+            row-gap: 0.5rem;
+        }
+        
+        .footer-races li {
+            white-space: nowrap;
+            margin-bottom: 0.25rem;
+        }
+        
+        .footer-disclaimer {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--medium-text);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .race-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .race-links {
+                flex-direction: column;
+            }
+            
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+            
+            .footer-races ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/oblivion-logo.png" alt="Oblivion Name Generator Logo">
+                    <h2>Oblivion Name Generator</h2>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#races">Races</a></li>
+                    <li><a href="index.html#naming-rules">Naming Rules</a></li>
+                    <li><a href="index.html#tips">Tips & Advice</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Orc Name Generator</h1>
+        
+        <div class="generator-container">
+            <h2>Generate an Orc Name</h2>
+            <p>Orcs (Orsimer) are the strong, honor-bound warriors with names that reflect their tough culture. Generate a lore-friendly name for your Orc character in Skyrim or Oblivion below.</p>
+            
+            <div class="gender-selector">
+                <button class="gender-btn active" data-gender="male">Male</button>
+                <button class="gender-btn" data-gender="female">Female</button>
+            </div>
+            
+            <button class="generate-btn" id="generateBtn">Generate Name</button>
+            
+            <div class="name-result" id="nameResult" title="Click to copy">Click the button to generate a name</div>
+            
+            <div class="name-history">
+                <h3>Previously Generated Names</h3>
+                <ul class="history-list" id="nameHistory">
+                    <!-- Generated names will appear here -->
+                </ul>
+            </div>
+            
+            <div class="other-races">
+                <h3>Other Race Name Generators</h3>
+                <p>Explore name generators for other races of Tamriel:</p>
+                <div class="race-links">
+                    <a href="imperial.html">Imperial Name Generator</a>
+                    <a href="nord.html">Nord Name Generator</a>
+                    <a href="breton.html">Breton Name Generator</a>
+                    <a href="redguard.html">Redguard Name Generator</a>
+                    <a href="dunmer.html">Dunmer Name Generator</a>
+                    <a href="altmer.html">Altmer Name Generator</a>
+                    <a href="bosmer.html">Bosmer Name Generator</a>
+                    <a href="argonian.html">Argonian Name Generator</a>
+                    <a href="khajiit.html">Khajiit Name Generator</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="race-info">
+            <h2>About Orc Names</h2>
+            
+            <div class="race-info-grid">
+                <div class="race-info-text">
+                    <p>Orcs, officially known as Orsimer in the Elder Scrolls universe, are a strong and proud race known for their martial prowess and honor-bound culture. Their naming conventions reflect their tough, direct nature and the clan-based structure of their society centered around strongholds.</p>
+                    
+                    <p>Orc names typically consist of a given name followed by a prefix that indicates their clan or stronghold. Male Orc names often sound harsh and strong, ending in "-gro," "-gor," or "-gol," while female Orc names, though still strong, may have slightly softer sounds, often ending in "-gra," "-ga," or "-gu." The prefix "gro-" for males and "gra-" for females is added to the father's name or clan name.</p>
+                    
+                    <p>The Orc naming convention is also popular in fantasy settings beyond the Elder Scrolls universe. Their strong, guttural names work well for warrior characters, barbarians, or tribal societies in many fantasy games and stories. Male Orc names like Dushnamub or Burguk and female Orc names like Shel or Atub showcase the distinctive style of this proud warrior race.</p>
+                    
+                    <p>Notable Orc characters in the Elder Scrolls series include Urag gro-Shub, the librarian at the College of Winterhold, and Ghorbash the Iron Hand, a potential follower in Skyrim. Our Orc name generator creates authentic names that fit perfectly within the Elder Scrolls lore while also working well for other fantasy settings.</p>
+                </div>
+                
+                <div class="race-info-image">
+                    <img src="images/orc-info.jpg" alt="Orc (Orsimer) Character from Elder Scrolls">
+                </div>
+            </div>
+            
+            <div class="name-examples">
+                <h3>Famous Orc Characters</h3>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h4>Urag gro-Shub</h4>
+                        <p>The dedicated and somewhat intimidating librarian at the College of Winterhold in Skyrim.</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Ghorbash the Iron Hand</h4>
+                        <p>A former Imperial Legion soldier who can become a follower in Skyrim.</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Borgakh the Steel Heart</h4>
+                        <p>A female Orc warrior from Mor Khazgur stronghold who can become a follower in Skyrim.</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Mazoga the Orc</h4>
+                        <p>A female Orc warrior in Oblivion who becomes a Knight Errant of the White Stallion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/oblivion-logo-small.png" alt="Oblivion Name Generator">
+                    <p>Oblivion Name Generator</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#races">Races</a></li>
+                        <li><a href="index.html#naming-rules">Naming Rules</a></li>
+                        <li><a href="index.html#tips">Tips & Advice</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-races">
+                    <h3>Oblivion Name Generator</h3>
+                    <ul>
+                        <li><a href="imperial.html">Imperial Name</a></li>
+                        <li><a href="nord.html">Nord Name</a></li>
+                        <li><a href="breton.html">Breton Name</a></li>
+                        <li><a href="redguard.html">Redguard Name</a></li>
+                        <li><a href="dunmer.html">Dunmer Name</a></li>
+                        <li><a href="altmer.html">Altmer Name</a></li>
+                        <li><a href="bosmer.html">Bosmer Name</a></li>
+                        <li><a href="orc.html">Orc Name</a></li>
+                        <li><a href="argonian.html">Argonian Name</a></li>
+                        <li><a href="khajiit.html">Khajiit Name</a></li>
+                    </ul>
+                </div>
+                <div class="footer-disclaimer">
+                    <p>This website is not affiliated with Bethesda Softworks or ZeniMax Media Inc. The Elder Scrolls, Oblivion, and all related trademarks are the property of their respective owners.</p>
+                    <p>&copy; 2025 Oblivion Name Generator. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="copyTooltip" class="copy-tooltip">Copied!</div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const nameResult = document.getElementById('nameResult');
+            const nameHistory = document.getElementById('nameHistory');
+            const genderBtns = document.querySelectorAll('.gender-btn');
+            const copyTooltip = document.getElementById('copyTooltip');
+            
+            let selectedGender = 'male';
+            let nameHistoryList = [];
+            
+            // Set up gender selection
+            genderBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    genderBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedGender = this.getAttribute('data-gender');
+                });
+            });
+            
+            // Generate name when button is clicked
+            generateBtn.addEventListener('click', function() {
+                const newName = window.generateName('orc', selectedGender);
+                nameResult.textContent = newName;
+                
+                // Add to history
+                nameHistoryList.unshift(newName);
+                if (nameHistoryList.length > 5) {
+                    nameHistoryList.pop();
+                }
+                
+                updateNameHistory();
+            });
+            
+            // Function to copy text to clipboard
+            function copyToClipboard(text) {
+                // Create a temporary textarea element
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'absolute';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                
+                // Select and copy the text
+                textarea.select();
+                document.execCommand('copy');
+                
+                // Remove the temporary textarea
+                document.body.removeChild(textarea);
+                
+                // Show the tooltip
+                return true;
+            }
+            
+            // Function to show tooltip
+            function showTooltip(x, y) {
+                copyTooltip.style.left = `${x}px`;
+                copyTooltip.style.top = `${y}px`;
+                copyTooltip.classList.add('show');
+                
+                // Hide tooltip after 2 seconds
+                setTimeout(() => {
+                    copyTooltip.classList.remove('show');
+                }, 2000);
+            }
+            
+            // Update name history display
+            function updateNameHistory() {
+                nameHistory.innerHTML = '';
+                
+                nameHistoryList.forEach(name => {
+                    const li = document.createElement('li');
+                    
+                    const nameSpan = document.createElement('span');
+                    nameSpan.textContent = name;
+                    
+                    const copyBtn = document.createElement('button');
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.addEventListener('click', function(e) {
+                        if (copyToClipboard(name)) {
+                            // Get button position for tooltip
+                            const rect = this.getBoundingClientRect();
+                            const x = rect.left + window.scrollX;
+                            const y = rect.top + window.scrollY - 30; // Position above the button
+                            
+                            showTooltip(x, y);
+                        }
+                    });
+                    
+                    li.appendChild(nameSpan);
+                    li.appendChild(copyBtn);
+                    nameHistory.appendChild(li);
+                });
+                
+                if (nameHistoryList.length === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = 'No names generated yet';
+                    nameHistory.appendChild(li);
+                }
+            }
+            
+            // Initialize history
+            updateNameHistory();
+            
+            // Generate a name on page load for better user experience
+            window.addEventListener('load', function() {
+                generateBtn.click();
+            });
+            
+            // Add SEO-friendly content that's hidden visually but available to search engines
+            const seoContent = document.createElement('div');
+            seoContent.style.position = 'absolute';
+            seoContent.style.width = '1px';
+            seoContent.style.height = '1px';
+            seoContent.style.overflow = 'hidden';
+            seoContent.style.clip = 'rect(0 0 0 0)';
+            seoContent.innerHTML = `
+                <h2>Best Orc Name Generator for Skyrim and Oblivion</h2>
+                <p>Looking for the perfect Orc (Orsimer) name for your Skyrim or Oblivion character? Our Orc name generator creates authentic names for both male and female Orc warriors and adventurers.</p>
+                <h3>Orc Names in Skyrim</h3>
+                <p>Orc names in Skyrim follow the traditional naming conventions of Orsimer culture. Popular Orc names in Skyrim include Urag gro-Shub, Ghorbash the Iron Hand, and Borgakh the Steel Heart, showcasing the distinctive style of this proud warrior race.</p>
+                <h3>Female Orc Name Generator</h3>
+                <p>Our female Orc name generator creates authentic names like Borgakh, Atub, Shel, and Murbul. These names are perfect for female Orc warriors, blacksmiths, or stronghold leaders in your Elder Scrolls adventures or other fantasy settings.</p>
+                <h3>Female Orc Names</h3>
+                <p>Female Orc names often include the prefix "gra-" followed by their father's name or clan name. Examples include Mazoga, Borgakh, Atub, and Shel. Our Orc name generator creates authentic female Orc names perfect for your character in Skyrim or Oblivion.</p>
+                <h3>Orc Name Generator Male</h3>
+                <p>Our male Orc name generator creates authentic names like Urag gro-Shub, Ghorbash, Dushnamub, and Burguk. These names are perfect for male Orc warriors, blacksmiths, or chieftains in your Elder Scrolls adventures.</p>
+                <h3>Orc Name Generator Fantasy</h3>
+                <p>Our Orc name generator is perfect for creating names for orcs in any fantasy setting. The strong, guttural style of Orsimer names works well for warrior characters, barbarians, or tribal societies in fantasy novels, games, or role-playing campaigns beyond the Elder Scrolls universe.</p>
+            `;
+            document.body.appendChild(seoContent);
+            
+            // Make the main name result also copyable
+            nameResult.addEventListener('click', function() {
+                if (this.textContent && this.textContent !== 'Click the button to generate a name') {
+                    if (copyToClipboard(this.textContent)) {
+                        // Get element position for tooltip
+                        const rect = this.getBoundingClientRect();
+                        const x = rect.left + rect.width / 2 + window.scrollX;
+                        const y = rect.top + window.scrollY - 30; // Position above the element
+                        
+                        showTooltip(x, y);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

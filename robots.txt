@@ -1,0 +1,13 @@
+# robots.txt for http://oblivion-name-generator.com/
+
+User-agent: *
+Allow: /
+
+# Allow all bots to access the sitemap
+Sitemap: http://oblivion-name-generator.com/sitemap.xml
+
+# Disallow access to any potential admin or development areas
+Disallow: /admin/
+Disallow: /dev/
+Disallow: /test/
+Disallow: /temp/

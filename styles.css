@@ -1,0 +1,513 @@
+/* 
+   Oblivion Name Generator
+   Main Stylesheet
+*/
+
+/* Base Styles & Reset */
+:root {
+    --primary-color: #6e2b0c;
+    --secondary-color: #a86032;
+    --accent-color: #d4a76a;
+    --dark-bg: #1a1a1a;
+    --darker-bg: #0f0f0f;
+    --light-text: #e0e0e0;
+    --medium-text: #b0b0b0;
+    --border-color: #3a3a3a;
+    --card-bg: #2a2a2a;
+    --hover-color: #8a3c14;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    --transition: all 0.3s ease;
+    --border-radius: 5px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--light-text);
+    background-color: var(--dark-bg);
+    background-image: url('images/dark-texture.png');
+    background-attachment: fixed;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--medium-text);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--darker-bg);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+    margin-right: 1rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+nav li {
+    margin-left: 2rem;
+}
+
+nav a {
+    color: var(--light-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/oblivion-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--light-text);
+    text-align: center;
+    padding: 8rem 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+}
+
+.hero h2::after {
+    background-color: var(--accent-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--light-text);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+/* Races Section */
+.races {
+    background-color: var(--darker-bg);
+    padding: 5rem 0;
+}
+
+.race-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.race-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.race-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+}
+
+.race-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.race-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.race-card:hover .race-image img {
+    transform: scale(1.1);
+}
+
+.race-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    text-align: center;
+}
+
+.race-card p {
+    padding: 0 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 80px;
+}
+
+.generate-button {
+    display: block;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 1rem;
+    margin: 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.generate-button:hover {
+    background-color: var(--hover-color);
+    color: var(--light-text);
+}
+
+/* Naming Rules Section */
+.naming-rules {
+    background-color: var(--dark-bg);
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.rule-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.rule-card h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.rule-card p, .rule-card ul {
+    font-size: 0.95rem;
+}
+
+.rule-card ul {
+    margin-top: 1rem;
+}
+
+.rule-card li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tips Section */
+.tips {
+    background-color: var(--darker-bg);
+}
+
+.tips-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.tips-text ol {
+    margin-left: 1.5rem;
+}
+
+.tips-text li {
+    margin-bottom: 1rem;
+    color: var(--medium-text);
+}
+
+.tips-text strong {
+    color: var(--accent-color);
+}
+
+.tips-image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* About Section */
+.about {
+    background-color: var(--dark-bg);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--darker-bg);
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.footer-logo img {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+
+.footer-logo p {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.footer-links h3, .footer-races h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+}
+
+.footer-links ul, .footer-races ul {
+    list-style: none;
+    margin: 0;
+}
+
+.footer-links li, .footer-races li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a, .footer-races a {
+    color: var(--medium-text);
+    transition: var(--transition);
+}
+
+.footer-links a:hover, .footer-races a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.footer-disclaimer {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-disclaimer p {
+    font-size: 0.9rem;
+    color: var(--medium-text);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .tips-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-image {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+    
+    .logo {
+        margin-bottom: 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav li {
+        margin: 0 1rem 0.5rem;
+    }
+    
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .race-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
