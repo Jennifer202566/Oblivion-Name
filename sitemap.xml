@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- 主页 -->
   <url>
-    <loc>http://oblivion-name-generator.com/</loc>
+    <loc>https://oblivion-name-generator.com/</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,61 +10,61 @@
 
   <!-- 种族名字生成器页面 -->
   <url>
-    <loc>http://oblivion-name-generator.com/imperial.html</loc>
+    <loc>https://oblivion-name-generator.com/imperial.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/nord.html</loc>
+    <loc>https://oblivion-name-generator.com/nord.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/breton.html</loc>
+    <loc>https://oblivion-name-generator.com/breton.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/redguard.html</loc>
+    <loc>https://oblivion-name-generator.com/redguard.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/dunmer.html</loc>
+    <loc>https://oblivion-name-generator.com/dunmer.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/altmer.html</loc>
+    <loc>https://oblivion-name-generator.com/altmer.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/bosmer.html</loc>
+    <loc>https://oblivion-name-generator.com/bosmer.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/orc.html</loc>
+    <loc>https://oblivion-name-generator.com/orc.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/argonian.html</loc>
+    <loc>https://oblivion-name-generator.com/argonian.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/khajiit.html</loc>
+    <loc>https://oblivion-name-generator.com/khajiit.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -72,13 +72,13 @@
 
   <!-- 法律页面 -->
   <url>
-    <loc>http://oblivion-name-generator.com/privacy.html</loc>
+    <loc>https://oblivion-name-generator.com/privacy.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://oblivion-name-generator.com/terms.html</loc>
+    <loc>https://oblivion-name-generator.com/terms.html</loc>
     <lastmod>2025-04-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
